@@ -79,7 +79,14 @@ void powerSwitchChanged(bool value, int index) {
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: const Text("Smart Devices"),
+              child: Text(
+                "Smart Devices",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  color: Colors.grey[800],
+                ),
+                ),
             ),
             Expanded(
                 child: GridView.builder(
