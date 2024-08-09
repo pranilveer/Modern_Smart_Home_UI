@@ -22,6 +22,14 @@ class _HomePageState extends State<HomePage> {
     ["Smart Fan", "lib/icons/fan.png", false]
   ];
 
+  
+void powerSwitchChanged(bool value, int index) {
+  setState(() {
+    mySmartDevices[index][2]= value;
+  });
+}
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +94,8 @@ class _HomePageState extends State<HomePage> {
                       return SmartDeviceBox(
                         smartDeviceName: mySmartDevices[index][0],
                         iconPath: mySmartDevices[index][1],
-                        powerOn: mySmartDevices[index][2],
+                        powerOn: mySmartDevices[index][2], 
+                        onChanged: (value) => powerSwitchChanged(value, index),
                       );
                     }))
           ],
