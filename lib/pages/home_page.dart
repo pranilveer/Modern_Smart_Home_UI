@@ -22,13 +22,11 @@ class _HomePageState extends State<HomePage> {
     ["Smart Fan", "lib/icons/fan.png", false]
   ];
 
-  
-void powerSwitchChanged(bool value, int index) {
-  setState(() {
-    mySmartDevices[index][2]= value;
-  });
-}
-
+  void powerSwitchChanged(bool value, int index) {
+    setState(() {
+      mySmartDevices[index][2] = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +73,17 @@ void powerSwitchChanged(bool value, int index) {
               ),
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
+
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: Divider(
+                color: Colors.grey[400],
+                thickness: 1,
+              ),
+            ),
+
+            const SizedBox(height: 25),
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
@@ -86,11 +94,12 @@ void powerSwitchChanged(bool value, int index) {
                   fontSize: 24,
                   color: Colors.grey[800],
                 ),
-                ),
+              ),
             ),
             Expanded(
                 child: GridView.builder(
                     itemCount: mySmartDevices.length,
+                    physics: const NeverScrollableScrollPhysics(),
                     padding: const EdgeInsets.all(25),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -101,7 +110,7 @@ void powerSwitchChanged(bool value, int index) {
                       return SmartDeviceBox(
                         smartDeviceName: mySmartDevices[index][0],
                         iconPath: mySmartDevices[index][1],
-                        powerOn: mySmartDevices[index][2], 
+                        powerOn: mySmartDevices[index][2],
                         onChanged: (value) => powerSwitchChanged(value, index),
                       );
                     }))
